@@ -25,4 +25,3 @@ class StoryNode(Base):
     options = Column(JSON, default = list)
 
     story = relationship("Story", back_populates= "nodes")
-    
