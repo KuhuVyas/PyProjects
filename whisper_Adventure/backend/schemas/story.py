@@ -17,9 +17,10 @@ class CompleteStoryNodeResponse(StoryNodeBase):
 
     class Config:
         from_attributes = True
+
 class StoryBase(BaseModel):
     title : str
-    session_id = Optional[str] =None
+    session_id : Optional[str] =None
     class Config:
         from_attributes = True
 class CreateStoryRequest(BaseModel):
