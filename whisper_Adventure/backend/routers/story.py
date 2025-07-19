@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 from db.database import get_db, SessionLocal
 from models.story import Story, StoryNode
 from models.job import StoryJob
-
+from core.story_generator import StoryGenerator
 
 from schemas.story import (
     CompleteStoryResponse, CompleteStoryNodeResponse, CreateStoryRequest
@@ -52,6 +52,7 @@ def create_story(
     )
     return job
 def generate_story_task(job_id: str, theme: str, session_id: str):
+    print("--- EXECUTING LATEST CODE FROM routers/story.py ---")
     db =  SessionLocal()
 
     try:
@@ -64,8 +65,8 @@ def generate_story_task(job_id: str, theme: str, session_id: str):
             job.status = "processing"
             db.commit()
 
-            story = {} #todo: generate story
-            job.story_id = 1 #todo: update story id
+            story = StoryGenerator.generate_story(db, session_id, theme)
+            job.story_id = story.id
             job.status = "completed"
             job.completed_at = datetime.now()
             db.commit()

@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     DEBUG: bool = False
 
     DATABASE_URL :str
+    MY_BASE_URL: str
 
     ALLOWED_ORIGINS: str = ""
 

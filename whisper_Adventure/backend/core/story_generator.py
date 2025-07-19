@@ -1,19 +1,26 @@
 from sqlalchemy.orm import Session
-from core.config import settings
+
 
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate, ChatPromptTemplate
 from langchain_core.output_parsers import PydanticOutputParser
-
+import os
 from core.models import StoryLLMResponse
 from core.prompts import STORY_PROMPT
 from models.story import Story , StoryNode
 from core.models import StoryLLMResponse, StoryNodeLLM
+from dotenv import load_dotenv
 
+load_dotenv()
 class StoryGenerator:
     @classmethod
     def _get_llm(cls):
-        return ChatOpenAI(model="gpt-4-turbo")
+        return ChatOpenAI(
+            model="gpt-4-turbo",
+            api_key=os.environ.get("OPENAI_API_KEY"),
+            base_url=os.environ.get("MY_BASE_URL"),
+            max_tokens=1000
+        )
 
     @classmethod
     def generate_story(cls, db: Session, session_id: str, theme : str = "fantasy") -> Story:
@@ -57,13 +64,13 @@ class StoryGenerator:
             content = node_data.content if hasattr(node_data, "content") else node_data["content"],
             is_root = is_root,
             is_ending = node_data.isEnding if hasattr(node_data, "isEnding") else node_data["isEnding"],
-            is_winning_ending = node_data.isWinningEnding if hasattr(node_data, "isWinningEnding") else node_data["isWWinningEnding"],
+            is_winning_ending = node_data.isWinningEnding if hasattr(node_data, "isWinningEnding") else node_data["isWinningEnding"],
             options = []
         )
         db.add(node)
         db.flush()
 
-        if not node.is_ending and (hasattr(node_data, "options") and node_data.otions):
+        if not node.is_ending and (hasattr(node_data, "options") and node_data.options):
             options_list = []
             for option_data in node_data.options:
                 next_node = option_data.nextNode
