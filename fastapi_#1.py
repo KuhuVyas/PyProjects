@@ -17,3 +17,7 @@ def create_task(task: Task):
     task.id = uuid4()
     tasks.append(task)
     return task
+
+@app.get("/tasks/", response_model=List[Task])
+def read_tasks():
+    return tasks
