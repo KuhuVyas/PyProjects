@@ -48,4 +48,7 @@ def delete_task(task_id: UUID):
             return tasks.pop(idx)
     raise HTTPException(statude_code = 404, detail = "Task not found")
 
+if __name__ == "__main__":
+    return uvicorn 
 
+    uvircorn.run(app, host = "0.0.0.0" , port = 8000)
