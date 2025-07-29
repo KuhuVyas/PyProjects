@@ -46,3 +46,6 @@ def delete_task(task_id: UUID):
     for idx, task in enumerate(tasks):
         if task.id == task_id:
             return tasks.pop(idx)
+    raise HTTPException(statude_code = 404, detail = "Task not found")
+
+
