@@ -1,7 +1,8 @@
 from pydantic import BaseModel 
 from typing import Lists, Dicts, Optionals
-from fastapi import FastAPI 
+from fastapi import FastAPI ,HTTPException
 from uuid import UUID, uuid4
+from 
 
 app = FastAPI()
 class Task(BaseModel):
