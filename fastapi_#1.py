@@ -21,3 +21,9 @@ def create_task(task: Task):
 @app.get("/tasks/", response_model=List[Task])
 def read_tasks():
     return tasks
+
+@app.get("/tasks/{task_id}", response_model=Task)
+def read_task(task_id: UUID):
+    for task in tasks:
+        if task.id == task_id:
+            return task
