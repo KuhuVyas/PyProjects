@@ -10,3 +10,10 @@ class Task(BaseModel):
     description: Optional[str] = None
     completed: bool = False
 
+tasks = []
+
+@app.post("/tasks/", response_model=Task)
+def create_task(task: Task):
+    task.id = uuid4()
+    tasks.append(task)
+    return task
