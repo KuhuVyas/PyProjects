@@ -15,4 +15,5 @@ This repository serves as a tracker for my growth and learning in Python — ran
 
 ## 🖊️ Author
 
-**Kuhu Vyas**  
+**Kuhu Vyas**
+[GitHub Profile »](https://github.com/kuhuvyas)
