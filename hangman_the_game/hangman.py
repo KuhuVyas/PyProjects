@@ -16,3 +16,14 @@ for position in range(word_length):
     placeholder += "_"
 print("Word to guess: " + placeholder)
 
+game_over = False
+correct_letters = []
+
+while not game_over:
+
+
+
+
+# TODO: - If the user has entered a letter they've already guessed, print the letter and let them know.
+    if guess in correct_letters:
+        print(f"You already guessed 😅 {guess}")
