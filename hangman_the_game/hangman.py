@@ -21,11 +21,24 @@ correct_letters = []
 
 while not game_over:
      # TODO: - Update the code below to tell the user how many lives they have left.
- print(f"****************************{lives}/6 LIVES LEFT****************************")
- guess = input("Guess a letter: ").lower()
-
-
+     print(f"****************************{lives}/6 LIVES LEFT****************************")
+     guess = input("Guess a letter: ").lower()
+     
 
 # TODO: - If the user has entered a letter they've already guessed, print the letter and let them know.
-    if guess in correct_letters:
+     if guess in correct_letters:
         print(f"You already guessed 😅 {guess}")
+
+     display = ""
+
+     for letter in chosen_word:
+        if letter == guess:
+            display += letter
+            correct_letters.append(guess)
+        elif letter in correct_letters:
+            display += letter
+        else:
+            display += "_"
+
+     print("Word to guess: " + display)
+     
