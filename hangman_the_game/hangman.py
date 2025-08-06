@@ -45,3 +45,8 @@ while not game_over:
      if guess not in chosen_word:
         lives -= 1
         print(f"You've guessed {guess}, that's not in the word. You've lost a life 😒")
+        if lives == 0:
+          game_over = True
+
+            # TODO: - Update the print statement below to give the user the correct word they were trying to guess.
+          print(f"***********************IT WAS {chosen_word}! YOU LOSE**********************")
