@@ -54,3 +54,6 @@ while not game_over:
      if "_" not in display:
           game_over = True
           print("****************************YOU WIN****************************")
+     
+     #TODO: - Update the code below to use the stages List from the file hangman_art.py
+     print(stages[lives])
