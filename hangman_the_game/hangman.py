@@ -41,4 +41,7 @@ while not game_over:
             display += "_"
 
      print("Word to guess: " + display)
-     
+
+     if guess not in chosen_word:
+        lives -= 1
+        print(f"You've guessed {guess}, that's not in the word. You've lost a life 😒")
