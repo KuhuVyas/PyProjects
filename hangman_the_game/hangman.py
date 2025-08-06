@@ -50,3 +50,7 @@ while not game_over:
 
             # TODO: - Update the print statement below to give the user the correct word they were trying to guess.
           print(f"***********************IT WAS {chosen_word}! YOU LOSE**********************")
+
+     if "_" not in display:
+          game_over = True
+          print("****************************YOU WIN****************************")
