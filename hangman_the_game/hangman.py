@@ -20,7 +20,9 @@ game_over = False
 correct_letters = []
 
 while not game_over:
-
+     # TODO: - Update the code below to tell the user how many lives they have left.
+ print(f"****************************{lives}/6 LIVES LEFT****************************")
+ guess = input("Guess a letter: ").lower()
 
 
 
